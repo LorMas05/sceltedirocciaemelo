@@ -1,0 +1,35 @@
+<div class="mainContainer">
+    <div class="Content">
+        <button class="takedecisionButton" mat-flat-button color="primary" (click)="addOption()">add an option</button>
+        <ngx-wheel *ngIf="items.length>0" style="margin-top: 30px;"
+        #wheel
+        width='400'
+        height='400'
+        spinDuration='8'
+        [disableSpinOnClick]='true'
+        [items]='items'
+        [innerRadius]='50'
+        [spinAmount]='10'
+        pointerStrokeColor='red'
+        pointerFillColor='purple'
+        [idToLandOn]='idToLandOn'
+      >
+      </ngx-wheel>
+      <div class="predecision" *ngIf="items.length==0">
+            Please Add an Option
+      </div>
+      <mat-card class="dialogContainer" *ngIf="showOptionCard">
+        <h1 class="dialogName"> Create new option</h1>
+        <mat-label class="labelInDialog">insert option name</mat-label>
+        <input #textInput class="inputInDIalog" matInput (input)="changedtext(textInput.value)">
+        <mat-label class="labelInDialog" style="margin-top: 20px;">Chose a color</mat-label>
+        <input #colorInput class="inputInDIalog" style="height: 100px;" value="#673AB7"  type="color" matInput (input)="changedcolor(colorInput.value)">
+        <div class="footerDialog">
+            <button mat-flat-button color="warn" (click)="closedColorDialog(false)">Close</button>
+            <button mat-flat-button color="primary" (click)="closedColorDialog(true)"style="float: right;">Send</button>
+        </div>
+      </mat-card>
+      <button class="takedecisionButton" mat-flat-button color="primary" (click)="SpinWheel()">Take a decision !!</button>
+    </div>
+
+</div>
